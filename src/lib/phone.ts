@@ -1,5 +1,5 @@
 // Phone import normalization; pure functions, no network or database access.
-// Sanitized excerpt from the private CRM; executable logic retained.
+// Sanitized CRM excerpt, with reviewed import edge cases fixed in this edition.
 const DIAL: Record<string, string> = {
   US: "1", CA: "1", DE: "49", AT: "43", CH: "41", GB: "44", UK: "44",
   NL: "31", FR: "33", ES: "34", IT: "39", BE: "32", PL: "48", TR: "90",
@@ -62,7 +62,21 @@ export function normalisePhone(
   let s = String(raw ?? "").trim();
   if (!s) return { ok: false, reason: "no number" };
 
-  if (/e\+/i.test(s) && !Number.isNaN(Number(s))) s = Number(s).toFixed(0);
+  if (/^[0-9]+(?:\.[0-9]+)?e\+[0-9]+$/i.test(s) || typeof raw === 'number') {
+    const numeric = Number(s);
+    if (!Number.isSafeInteger(numeric) || numeric < 0) {
+      return { ok: false, reason: 'number cannot be represented without loss' };
+    }
+    s = String(numeric);
+  }
+  // Extensions and vanity text need explicit handling by the caller.
+  // Silently removing letters can change the actual dialing destination.
+  if (!/^\+?[0-9\s().-]+$/.test(s)) {
+    return { ok: false, reason: 'unsupported phone format' };
+  }
+  if (/^\+[0-9\s.-]+\(0\)/.test(s)) {
+    return { ok: false, reason: 'remove the optional trunk prefix from international input' };
+  }
 
   const hadPlus = s.startsWith("+");
   let digits = s.replace(/\D/g, "");
@@ -90,7 +104,8 @@ export function normalisePhone(
     return finish(cc + digits);
   }
 
-  if (digits.startsWith("0")) digits = digits.replace(/^0+/, "");
+  // Italy retains the leading zero of geographic numbers internationally.
+  if (iso !== 'IT' && digits.startsWith("0")) digits = digits.replace(/^0+/, "");
   if (!digits) return { ok: false, reason: "no digits after country prefix" };
 
   if (digits.startsWith(cc) && digits.length > cc.length + 4) return finish(digits);
@@ -99,6 +114,7 @@ export function normalisePhone(
 }
 
 function finish(digits: string): PhoneResult {
+  if (digits.startsWith('0')) return { ok: false, reason: 'invalid country prefix' };
   if (digits.length < 8) return { ok: false, reason: `too short (${digits.length} digits)` };
   if (digits.length > 15) return { ok: false, reason: `too long (${digits.length} digits)` };
   return { ok: true, phone: "+" + digits };
