@@ -1,6 +1,6 @@
-# Team Gold CRM
+# Team Gold CRM — Production System Showcase
 
-A CRM for workflows at my company, Team Gold: collect and qualify business leads, distribute work to representatives, make browser-based calls, coordinate outreach, and inspect outcomes in one dashboard.
+A CRM built for a real sales workflow: collect and qualify business leads, distribute work to representatives, make browser-based calls, coordinate outreach, and inspect outcomes in one dashboard.
 
 **Sanitized portfolio edition of a private production system.** This repository presents its architecture and three selected, independently testable source excerpts. It contains no production access, customer records, recordings, or private Git history. It is a case study, not the deployable CRM.
 
@@ -56,7 +56,7 @@ For a simplified API map, core data relationships and lead-to-outcome sequence, 
 | [normEmail.ts](src/lib/normEmail.ts) | Removes `mailto:` and display-name wrappers while preserving address content and local-part case. |
 | [dedupeEmpfaenger.ts](src/lib/dedupeEmpfaenger.ts) | Keeps the first candidate per normalized recipient, preserving the original queue order. |
 
-The helpers originate from the private system; this public edition additionally fixes phone-import edge cases (Italian geographic prefixes, unsafe numeric input and unsupported extensions). These changes have not been applied to the private CRM in this audit. Operational anecdotes and private examples in comments have been removed. The email normalizer removes wrappers; it is not a complete email-address validator. Phone normalization does not verify number ownership or reachability.
+Executable helper logic is retained from the private system. Operational anecdotes and private examples in comments have been removed. The email normalizer removes wrappers; it is not a complete email-address validator. Phone normalization does not verify number ownership or reachability.
 
 ## Engineering challenges
 
@@ -76,8 +76,6 @@ Node.js 24 or newer; no install, cloud accounts or environment variables require
 ```sh
 npm test
 ```
-
-For the strict TypeScript check, run `npm ci` and `npm run typecheck`. GitHub Actions runs both the helper tests and the type check. TypeScript is a development dependency only.
 
 Tests cover only the included pure helpers. They do not test the private CRM, provider integrations, RLS policies or live deployment. All contact examples are invented and use reserved example domains and fictional telephone numbers. No calls or messages are sent.
 
