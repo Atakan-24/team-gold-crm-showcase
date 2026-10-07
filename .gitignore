@@ -1,13 +1,3 @@
-# Local environment, dependencies, and private artifacts
+# Development dependencies and compiler output are not public source excerpts.
 node_modules/
-.env
-.env.*
-!.env.example
-.next/
-coverage/
-*.log
-.DS_Store
-*.csv
-*.sqlite
-*.sql
-private/
+*.tsbuildinfo
