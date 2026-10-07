@@ -16,3 +16,5 @@ This is a sanitized case study of a private production CRM, with three selected 
 | .gitignore | Local credentials and artifacts excluded. |
 
 The three helpers have no imports or production service dependencies. Tests import them directly using Node's TypeScript support. No private repository history is included.
+
+- `docs/SYSTEM-WALKTHROUGH.md`: simplified source-grounded API responsibilities, core relationships and workflow; no live production schema or records.

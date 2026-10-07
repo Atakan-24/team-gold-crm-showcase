@@ -46,6 +46,8 @@ flowchart LR
 
 The lead collector is a separate system; its implementation is not included here. The diagram is a high-level view, not an exhaustive deployment or trust-boundary map.
 
+For a simplified API map, core data relationships and lead-to-outcome sequence, see [System walkthrough](docs/SYSTEM-WALKTHROUGH.md).
+
 ## Selected source excerpts
 
 | Module | Why it matters |
