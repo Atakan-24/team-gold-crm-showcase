@@ -1,0 +1,13 @@
+# Local environment, dependencies, and private artifacts
+node_modules/
+.env
+.env.*
+!.env.example
+.next/
+coverage/
+*.log
+.DS_Store
+*.csv
+*.sqlite
+*.sql
+private/
