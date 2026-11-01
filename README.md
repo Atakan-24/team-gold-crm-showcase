@@ -106,7 +106,7 @@ Tests cover only the included pure helpers. They do not test the private CRM, pr
 
 ## Screenshots
 
-Captured from the private application with synthetic data. Page-by-page notes are in the [feature tour](docs/FEATURES.md).
+Captured from the private application with synthetic data. Page-by-page notes are in the [feature tour](docs/FEATURES.md); every main page is in the [page gallery](docs/PAGES.md).
 
 | | |
 |---|---|
