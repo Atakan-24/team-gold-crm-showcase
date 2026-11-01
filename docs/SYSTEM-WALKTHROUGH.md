@@ -56,4 +56,4 @@ This is a conceptual sequence. It is not a guarantee that every optional module 
 
 The source includes Vercel configuration, scheduled routes and Supabase migrations. This public edition tests three isolated helpers with synthetic inputs. It does not expose production logs or claim conversion improvements, savings, user counts or uptime.
 
-A future operational case-study update requires verified, publishable evidence from the system operator. Screenshots must come from an isolated synthetic-data session; masking a live customer dashboard is insufficient assurance.
+A future operational case-study update requires verified, publishable evidence from the system operator. Screenshots and video must come from an isolated synthetic-data session; masking a live customer dashboard is insufficient assurance. The current media follows that rule (see [Demo media](SECURITY.md#demo-media)).

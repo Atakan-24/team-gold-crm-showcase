@@ -23,3 +23,7 @@ The intended public files are reviewed separately from the private source. Secre
 ## Rate limits and RLS
 
 No HTTP service or database is deployed by this showcase, so it introduces neither an API rate-limit surface nor RLS policies. The production system's policies and integration credentials remain private. A runnable demo would require a separate security review.
+
+## Demo media
+
+README images and the video come from an **isolated synthetic-data session**: the private application ran locally against a throwaway database that contains only invented businesses (marked "(demo)"), reserved `555-01xx` numbers and `example.com` addresses. No live dashboard was captured or masked, and no production credential, token, recording or customer record appears in any frame. Each new image is reviewed frame by frame before publication.

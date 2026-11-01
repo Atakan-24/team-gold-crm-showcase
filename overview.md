@@ -5,6 +5,10 @@ This is a sanitized case study of a private production CRM, with three selected 
 | Path | Purpose |
 |---|---|
 | README.md | Recruiter-facing system overview and architectural diagram. |
+| docs/FEATURES.md | Page-by-page feature tour with synthetic-data screenshots. |
+| docs/ROLES-AND-ACCESS.md | Admin, manager and agent roles; team-scoped access and what was checked. |
+| docs/images/ | Screenshots from a synthetic-data session (invented businesses only). |
+| docs/media/ | One-minute walkthrough as MP4 and GIF, same synthetic dataset. |
 | docs/ENGINEERING.md | Source-grounded decisions, challenges, and implementation limits. |
 | docs/SECURITY.md | Publication boundary and privacy approach. |
 | src/lib/phone.ts | International phone normalization; rejects unknown country context. |
