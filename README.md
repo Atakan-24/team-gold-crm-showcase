@@ -4,6 +4,31 @@ A CRM built for a real sales workflow: collect and qualify business leads, distr
 
 **Sanitized portfolio edition of a private production system.** This repository presents its architecture and three selected, independently testable source excerpts. It contains no production access, customer records, recordings, or private Git history. It is a case study, not the deployable CRM.
 
+<p align="center">
+  <img src="docs/media/demo.gif" alt="One-minute walkthrough of the Team Gold CRM dashboard" width="760">
+</p>
+
+<p align="center">
+  <a href="docs/media/demo.mp4"><b>▶ Full-quality video (MP4, 1 min)</b></a> ·
+  <a href="docs/FEATURES.md">Feature tour</a> ·
+  <a href="docs/ROLES-AND-ACCESS.md">Roles &amp; access</a>
+</p>
+
+> **About the visuals.** All screenshots and the video were captured from the private application running locally against an isolated database filled with **synthetic data**: invented businesses marked "(demo)", reserved `555-01xx` numbers and `example.com` addresses. No production record, recording or credential appears anywhere. See [publication boundaries](docs/SECURITY.md).
+
+## At a glance
+
+| | |
+|---|---|
+| Dashboard pages | 41 |
+| Server API routes | 159 |
+| Source files under `src/` | 589 |
+| SQL migrations | 104 numbered files |
+| Roles | admin · manager · agent |
+| Interface languages | English, German, Arabic |
+
+Counts are taken from the reviewed private repository; they describe the source, not the deployed state.
+
 ## Tech stack
 
 **Next.js · React · TypeScript · Supabase/PostgreSQL · Telnyx WebRTC · Resend · Vercel**
@@ -81,7 +106,19 @@ Tests cover only the included pure helpers. They do not test the private CRM, pr
 
 ## Screenshots
 
-Production screenshots are intentionally excluded. A screenshot can expose lead records, phone numbers, emails, internal notes or tokens. This edition uses a diagram and source excerpts rather than copying an unverified dashboard capture.
+Captured from the private application with synthetic data. Page-by-page notes are in the [feature tour](docs/FEATURES.md); every main page is in the [page gallery](docs/PAGES.md).
+
+| | |
+|---|---|
+| **Sign-in** with show-password toggle and DE / EN / AR switch<br><img src="docs/images/01-login.png" width="420"> | **Dashboard**: pre-shift check, shift timer, daily goal, calls worth hearing<br><img src="docs/images/02-dashboard.png" width="420"> |
+| **Contacts**: lead pools, controlled pulls, CSV import/export<br><img src="docs/images/03-contacts.png" width="420"> | **Calls & SMS**: per-rep results and the calls worth hearing first<br><img src="docs/images/04-calls-activity.png" width="420"> |
+| **Recordings** with business context, transcript and AI summary<br><img src="docs/images/05-recordings-transcript.png" width="420"> | **Insights**: answer rate per number, hook by website type, attempt curve<br><img src="docs/images/06-insights.png" width="420"> |
+
+### Roles: the same page, scoped differently
+
+An admin sees all 25 recordings. A manager opens the same page and sees only the 8 recordings of the reps they invited (see [roles and access](docs/ROLES-AND-ACCESS.md)).
+
+<img src="docs/images/07-manager-scoped-recordings.png" alt="Manager view: recordings limited to own team" width="760">
 
 ## Security & privacy
 
